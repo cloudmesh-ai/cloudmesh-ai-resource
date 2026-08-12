@@ -1,0 +1,34 @@
+docs_dir: docs
+extra_css:
+- css/custom.css
+nav:
+- Home: index.md
+- Documents: 
+  - README: readme.md
+- Project:
+  - Changelog: CHANGELOG.md
+  - GitHub: https://github.com/cloudmesh-ai/cloudmesh-ai-resource
+  - Issues: https://github.com/cloudmesh-ai/cloudmesh-ai-resource/issues
+- API Reference: api.md
+plugins:
+- cloudmesh-ai-theme
+- search
+- mkdocstrings:
+    handlers:
+      python:
+        options:
+          docstring_section_style: table
+          docstring_style: google
+          group_by_category: true
+          members: true
+          separate_signature: true
+          show_category_heading: true
+          show_root_full_path: true
+          show_source: true
+          show_submodules: true
+        paths:
+        - src
+site_name: Cloudmesh AI resource
+theme:
+  name: material
+use_directory_urls: false

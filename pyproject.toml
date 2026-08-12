@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudmesh-ai-resource"
+
+dynamic = ["version"]
+description = "Extension resource created by CME"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+urls = { "Homepage" = "https://github.com/cloudmesh-ai/cloudmesh-ai-resource" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "cloudmesh-ai-cmc",
+    "click",
+    "rich",
+    "pytest",
+    "cloudmesh-ai-common",
+    "cloudmesh-ai-theme",
+]
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[project.entry-points."cloudmesh.ai.command"]
+resource = "command.resource:register"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["command*"]
