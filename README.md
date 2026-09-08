@@ -1,6 +1,6 @@
 # Cloudmesh AI resource Extension
 
-This extension provides tools to monitor Slurm node resources and job status on remote clusters via SSH.
+This extension provides tools to monitor Slurm node resources and job status on remote clusters via SSH, as well as local infrastructure probes.
 
 ## Installation
 
@@ -95,6 +95,11 @@ MSG: Done.
 Get a deep-dive into a specific Slurm job:
 `cmc resource job 18438406`
 
+### Local Kubernetes Probe
+Detect the host environment, provide a system summary (including OS, CPU, RAM, Disk, and last Time Machine backup on macOS), and get a recommendation for the most suitable local Kubernetes tool (kind, minikube, k3d, or microk8s).
+
+`cmc resource probe k8s`
+
 ### Key Features
 - **Resource Summary**: Real-time view of Free, Total, and Used CPUs, Memory, and GPUs.
 - **Active Jobs Table**: Detailed list of running jobs including:
@@ -103,6 +108,7 @@ Get a deep-dive into a specific Slurm job:
     - **Left**: Calculated remaining time (`Limit - Time`).
     - **Full Name**: Resolved user names (with local caching for performance).
 - **Performance**: Uses persistent SSH connections and configurable timeouts to ensure stability and speed.
+- **Local Infrastructure Probe**: Provides a detailed system summary on macOS, including hardware specs and the last Time Machine backup status, to recommend the best local Kubernetes distribution.
 
 ## Core Dependencies
 This project depends on the following core components of the Cloudmesh AI ecosystem:

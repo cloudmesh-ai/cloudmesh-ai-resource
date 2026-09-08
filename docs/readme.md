@@ -1,20 +1,33 @@
 # Cloudmesh AI resource Extension
 
-This extension provides tools to measure network throughput to remote hosts
-and predict the time required to transfer local directories based on
-historical data.
-
-It supports multiple transfer protocols:
-- SCP (Secure Copy)
-- SFTP (SSH File Transfer Protocol)
-- Rsync (Remote Sync)
+This extension provides tools to monitor Slurm node resources and job status on remote clusters via SSH, as well as local infrastructure probes.
 
 ## Installation
 
-### Recommended: Using pipx
-For the best experience with CLI tools, use `pipx` to install `cloudmesh-ai-resource` in an isolated environment.
+### Using pip
+If you prefer a standard installation in your current environment:
 
 ```bash
+# This is not yet working as its not uploaded to pypi
+pip install cloudmesh-ai-resource
+```
+
+To install from a local directory:
+```bash
+git clone https://github.com/cloudmesh-ai/cloudmesh-ai-resources.git
+cd cloudmesh-ai-resources
+pip install -e .
+```
+
+
+### Using pipx
+
+**We have not yet tested pipx!**
+
+Use `pipx` to install `cloudmesh-ai-resource` in an isolated environment.
+
+```bash
+
 pipx install cloudmesh-ai-resource
 ```
 
@@ -23,50 +36,83 @@ To install from a local directory:
 pipx install .
 ```
 
-### Using pip
-If you prefer a standard installation in your current environment:
-
-```bash
-pip install cloudmesh-ai-resource
-```
-
-To install from a local directory:
-```bash
-pip install .
-```
 
 ## Usage Examples
 
-1. Run a speed test to a host using default SCP (50MB test):
-   `cme resource run my-server.com`
+### Resource Status
+Check the resource usage and active jobs for one or more Slurm nodes.
 
-2. Run a speed test using SFTP with a specific file size (100MB):
-   `cme resource run my-server.com --copy=sftp --size=100`
+1. Check status of a specific node:
+   `cmc resource status --node udc-an26-1`
 
-3. Run a speed test using Rsync with a specific SSH user:
-   `cme resource run my-server.com --copy=rsync --user=admin`
+2. Check status of multiple nodes:
+   `cmc resource status --node udc-an26-1,udc-an26-2`
 
-4. Predict how long it will take to upload a folder based on previous SCP tests:
-   `cme resource predict my-server.com --path=/home/user/data --copy=scp`
+3. Use a specific SSH jump host:
+   `cmc resource status --node udc-an26-1 --host uva`
 
-5. Test internet speed using Ookla resource CLI:
-   `cme resource internet`
+4. Monitor in real-time (watch mode):
+   `cmc resource status --node udc-an26-1 --watch`
 
-## Installation of Ookla resource CLI
+5. Export results as JSON:
+   `cmc resource status --node udc-an26-1 --json`
 
-To use the `resource internet` command, you must have the Ookla resource CLI installed:
+6. Detailed output
 
 ```bash
-brew tap teamookla/resource
-brew update
-# Example how to remove conflicting or old versions using brew
-# brew uninstall resource --force
-# brew uninstall resource-cli --force
-brew install resource --force
+$ cmc resource status                
 ```
 
-For more information, visit: https://www.resource.net/apps/cli
+```
+# ----------------------------------------------------------------------
+# SLURM NODE REPORT: udc-an26-1
+# ----------------------------------------------------------------------
+# SSH Host: uva
+# ----------------------------------------------------------------------
+
+Resource Summary
+╭──────────┬────────┬────────┬──────╮                              
+│ Resource │ Free   │ Total  │ Used │                        
+├──────────┼────────┼────────┼──────┤                                                                                        │ CPUs     │ 96     │ 128    │ 32   | 
+│ Memory   │ 1889GB │ 1953GB │ 64GB │                             
+│ GPUs     │ 4      │ 8      │ 4    |
+╰──────────┴────────┴────────┴──────╯                                                                                        
+
+Active Jobs                                                            
+╭──────────┬────────┬────┬───────┬─────────┬──────────┬──────┬─────┬─────────────────┬──────────────────────╮
+│ JobID    │ User   │ ST │ Time  │ Limit   │ Left     │ CPUs │ Mem │ GRES            │ Full Name            |
+├──────────┼────────┼────┼───────┼─────────┼──────────┼──────┼─────┼─────────────────┼──────────────────────┤
+│ 18438406 │ abc101 │ R  │ 40:20 │ 3:00:00 │ 02:19:40 │ 32   │ 64G │ gres/gpu:a100:4 │ Gregor von Laszewski |
+╰──────────┴────────┴────┴───────┴─────────┴──────────┴──────┴─────┴─────────────────┴──────────────────────╯                                                                                   
+
+---- PENDING JOBS (Top 10) ----
+JOBID         USER    ST       TIME     NODELIST(REASON)
+MSG: Report generated on: 2026-08-12 13:28:50
+MSG: Done.
+```
+
+### Job Details
+Get a deep-dive into a specific Slurm job:
+`cmc resource job 18438406`
+
+### Local Kubernetes Probe
+Detect the host environment, provide a system summary (including OS, CPU, RAM, Disk, and last Time Machine backup on macOS), and get a recommendation for the most suitable local Kubernetes tool (kind, minikube, k3d, or microk8s).
+
+`cmc resource probe k8s`
+
+### Key Features
+- **Resource Summary**: Real-time view of Free, Total, and Used CPUs, Memory, and GPUs.
+- **Active Jobs Table**: Detailed list of running jobs including:
+    - **Time**: Time already used.
+    - **Limit**: Total scheduled time limit.
+    - **Left**: Calculated remaining time (`Limit - Time`).
+    - **Full Name**: Resolved user names (with local caching for performance).
+- **Performance**: Uses persistent SSH connections and configurable timeouts to ensure stability and speed.
+- **Local Infrastructure Probe**: Provides a detailed system summary on macOS, including hardware specs and the last Time Machine backup status, to recommend the best local Kubernetes distribution.
+
 ## Core Dependencies
 This project depends on the following core components of the Cloudmesh AI ecosystem:
 - [cloudmesh-ai-common](https://github.com/cloudmesh-ai/cloudmesh-ai-common)
 - [cloudmesh-ai-cmc](https://github.com/cloudmesh-ai/cloudmesh-ai-cmc)
+
+

@@ -12,7 +12,7 @@ VERSION_FILE := VERSION
 GIT          := git
 PYENVVERSION := $(shell pyenv version-name)
 
-.PHONY: help install clean build test reinstall \ doc view check tag release test-html test-cov setup-test uninstall-all tmp-setup
+.PHONY: help install clean build test reinstall \ doc view check tag release test-html test-cov setup-test uninstall-all tmp-setup upload publish
 
 help:
 	@echo
@@ -27,7 +27,9 @@ help:
 	@echo "  test-cov      - Run pytest with coverage report"
 	@echo "  setup-test    - Install test deps"
 	@echo "  tag           - Create a git tag based on current version and push"
+	@echo "  upload        - Build, check, and upload to Production PyPI"
 	@echo "  release       - Full Production Cycle: upload + tag"
+	@echo "  publish       - Deploying MkDocs site to GitHub Pages"
 	@echo
 
 # --- DEVELOPMENT & TESTING ---
@@ -65,6 +67,11 @@ check: build
 tmp-setup:
 	cd /tmp && pyenv local $$(pyenv global)
 
+
+upload: check
+	@echo "Uploading to Production PyPI..."
+	$(TWINE) upload dist/*
+
 tag:
 	@VERSION=$$(cat $(VERSION_FILE)); \
 	echo "Tagging version v$$VERSION..."; \
@@ -91,9 +98,6 @@ reinstall: uninstall-all clean
 	@echo "Performing fresh install..."
 	$(PIP) install -e .
 
-publish:
-	@echo "Deploying MkDocs site to GitHub Pages..."
-	./publish.sh
 # --- DOCUMENTATION ---
 
 doc:
@@ -103,3 +107,8 @@ view:
 	lsof -ti:8000 | xargs kill -9
 	$(PIP) install -e ../cloudmesh-ai-theme
 	mkdocs serve --livereload
+
+publish:
+	@echo "Deploying MkDocs site to GitHub Pages..."
+	mkdocs gh-deploy --version $$(cat $(VERSION_FILE))
+

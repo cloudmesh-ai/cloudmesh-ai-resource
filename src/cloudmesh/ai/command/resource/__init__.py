@@ -3,7 +3,7 @@ Cloudmesh AI resource Extension
 ================================
 
 This extension provides tools to monitor Slurm node resources and job status
-on remote clusters via SSH.
+on remote clusters via SSH, and probe local Kubernetes environments.
 
 Usage Examples:
 -------------------------------------------------------------------------------
@@ -16,8 +16,12 @@ Usage Examples:
 3. Monitor node status in real-time (watch mode):
    $ cmc resource status --node udc-an26-1 --watch
 
+4. Probe local Kubernetes environment:
+   $ cmc resource probe k8s
+
 Usage:
     resource status [options]
+    resource probe k8s
 
 Options:
     --node <node>      Target Slurm node (default: udc-an26-1).
@@ -38,6 +42,7 @@ import click
 
 from cloudmesh.ai.common.io import console
 from .slurm import SlurmClient, SlurmClusterStatus, asdict
+from cloudmesh.ai.resource.k8s.probe import recommend as recommend_k8s
 
 def parse_slurm_time(time_str: str) -> int:
     """Convert Slurm time format (days-hours:minutes:seconds) to total seconds."""
@@ -144,11 +149,28 @@ def render_report(status: SlurmClusterStatus, node_name: str, host: str):
 # --- Click Group and Commands ---
 
 @click.group()
-def resource_group():
+def probe_group():
     """
-    resource tool for monitoring Slurm node resources.
+    Probe local resource tools.
     """
     pass
+
+@probe_group.command(name="k8s")
+def k8s_cmd():
+    """
+    Probe local environment for Kubernetes tool recommendations.
+    """
+    recommend_k8s()
+
+@click.group()
+def resource_group():
+    """
+    resource tool for monitoring Slurm node resources and local infrastructure.
+    """
+    pass
+
+# Register probe_group to resource_group
+resource_group.add_command(probe_group, name="probe")
 
 @resource_group.command(name="job")
 @click.argument("job_id")
