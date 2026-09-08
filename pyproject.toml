@@ -37,3 +37,4 @@ include = ["command*"]
 [tool.cloudmesh-ai]
 category = "infrastructure"
 status = "stable"
+order = 20
