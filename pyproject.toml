@@ -35,4 +35,5 @@ where = ["src"]
 include = ["command*"]
 
 [tool.cloudmesh-ai]
+category = "infrastructure"
 status = "stable"
