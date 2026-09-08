@@ -110,5 +110,5 @@ view:
 
 publish:
 	@echo "Deploying MkDocs site to GitHub Pages..."
-	mkdocs gh-deploy --version $$(cat $(VERSION_FILE))
+	mkdocs gh-deploy
 
