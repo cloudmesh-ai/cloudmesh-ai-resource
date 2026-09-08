@@ -296,10 +296,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#recommended-using-pipx" class="md-nav__link">
+  <a href="#using-pip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended: Using pipx
+        Using pip
       
     </span>
   </a>
@@ -307,10 +307,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-pip" class="md-nav__link">
+  <a href="#using-pipx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using pip
+        Using pipx
       
     </span>
   </a>
@@ -331,16 +331,55 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation-of-ookla-resource-cli" class="md-nav__link">
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation of Ookla resource CLI
+        Resource Status
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-kubernetes-probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Kubernetes Probe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -649,10 +688,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#recommended-using-pipx" class="md-nav__link">
+  <a href="#using-pip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended: Using pipx
+        Using pip
       
     </span>
   </a>
@@ -660,10 +699,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-pip" class="md-nav__link">
+  <a href="#using-pipx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using pip
+        Using pipx
       
     </span>
   </a>
@@ -684,16 +723,55 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation-of-ookla-resource-cli" class="md-nav__link">
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation of Ookla resource CLI
+        Resource Status
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-kubernetes-probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Kubernetes Probe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -762,61 +840,101 @@
 }
 </style>
 <h1 id="cloudmesh-ai-resource-extension">Cloudmesh AI resource Extension</h1>
-<p>This extension provides tools to measure network throughput to remote hosts
-and predict the time required to transfer local directories based on
-historical data.</p>
-<p>It supports multiple transfer protocols:
-- SCP (Secure Copy)
-- SFTP (SSH File Transfer Protocol)
-- Rsync (Remote Sync)</p>
+<p>This extension provides tools to monitor Slurm node resources and job status on remote clusters via SSH, as well as local infrastructure probes.</p>
 <h2 id="installation">Installation</h2>
-<h3 id="recommended-using-pipx">Recommended: Using pipx</h3>
-<p>For the best experience with CLI tools, use <code>pipx</code> to install <code>cloudmesh-ai-resource</code> in an isolated environment.</p>
-<pre><code class="language-bash">pipx install cloudmesh-ai-resource
-</code></pre>
-<p>To install from a local directory:</p>
-<pre><code class="language-bash">pipx install .
-</code></pre>
 <h3 id="using-pip">Using pip</h3>
 <p>If you prefer a standard installation in your current environment:</p>
-<pre><code class="language-bash">pip install cloudmesh-ai-resource
-</code></pre>
-<p>To install from a local directory:</p>
-<pre><code class="language-bash">pip install .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># This is not yet working as its not uploaded to pypi</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>cloudmesh-ai-resource
+</span></code></pre></div>
+<p>To install from a local directory:
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cloudmesh-ai/cloudmesh-ai-resources.git
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>cloudmesh-ai-resources
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span></code></pre></div></p>
+<h3 id="using-pipx">Using pipx</h3>
+<p><strong>We have not yet tested pipx!</strong></p>
+<p>Use <code>pipx</code> to install <code>cloudmesh-ai-resource</code> in an isolated environment.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>cloudmesh-ai-resource
+</span></code></pre></div>
+<p>To install from a local directory:
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>.
+</span></code></pre></div></p>
 <h2 id="usage-examples">Usage Examples</h2>
+<h3 id="resource-status">Resource Status</h3>
+<p>Check the resource usage and active jobs for one or more Slurm nodes.</p>
 <ol>
 <li>
-<p>Run a speed test to a host using default SCP (50MB test):
-   <code>cme resource run my-server.com</code></p>
+<p>Check status of a specific node:
+   <code>cmc resource status --node udc-an26-1</code></p>
 </li>
 <li>
-<p>Run a speed test using SFTP with a specific file size (100MB):
-   <code>cme resource run my-server.com --copy=sftp --size=100</code></p>
+<p>Check status of multiple nodes:
+   <code>cmc resource status --node udc-an26-1,udc-an26-2</code></p>
 </li>
 <li>
-<p>Run a speed test using Rsync with a specific SSH user:
-   <code>cme resource run my-server.com --copy=rsync --user=admin</code></p>
+<p>Use a specific SSH jump host:
+   <code>cmc resource status --node udc-an26-1 --host uva</code></p>
 </li>
 <li>
-<p>Predict how long it will take to upload a folder based on previous SCP tests:
-   <code>cme resource predict my-server.com --path=/home/user/data --copy=scp</code></p>
+<p>Monitor in real-time (watch mode):
+   <code>cmc resource status --node udc-an26-1 --watch</code></p>
 </li>
 <li>
-<p>Test internet speed using Ookla resource CLI:
-   <code>cme resource internet</code></p>
+<p>Export results as JSON:
+   <code>cmc resource status --node udc-an26-1 --json</code></p>
+</li>
+<li>
+<p>Detailed output</p>
 </li>
 </ol>
-<h2 id="installation-of-ookla-resource-cli">Installation of Ookla resource CLI</h2>
-<p>To use the <code>resource internet</code> command, you must have the Ookla resource CLI installed:</p>
-<pre><code class="language-bash">brew tap teamookla/resource
-brew update
-# Example how to remove conflicting or old versions using brew
-# brew uninstall resource --force
-# brew uninstall resource-cli --force
-brew install resource --force
-</code></pre>
-<p>For more information, visit: https://www.resource.net/apps/cli</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>cmc<span class="w"> </span>resource<span class="w"> </span>status<span class="w">                </span>
+</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># ----------------------------------------------------------------------
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a># SLURM NODE REPORT: udc-an26-1
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a># ----------------------------------------------------------------------
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a># SSH Host: uva
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a># ----------------------------------------------------------------------
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Resource Summary
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>╭──────────┬────────┬────────┬──────╮                              
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│ Resource │ Free   │ Total  │ Used │                        
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>├──────────┼────────┼────────┼──────┤                                                                                        │ CPUs     │ 96     │ 128    │ 32   | 
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│ Memory   │ 1889GB │ 1953GB │ 64GB │                             
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│ GPUs     │ 4      │ 8      │ 4    |
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>╰──────────┴────────┴────────┴──────╯                                                                                        
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>Active Jobs                                                            
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>╭──────────┬────────┬────┬───────┬─────────┬──────────┬──────┬─────┬─────────────────┬──────────────────────╮
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│ JobID    │ User   │ ST │ Time  │ Limit   │ Left     │ CPUs │ Mem │ GRES            │ Full Name            |
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>├──────────┼────────┼────┼───────┼─────────┼──────────┼──────┼─────┼─────────────────┼──────────────────────┤
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>│ 18438406 │ abc101 │ R  │ 40:20 │ 3:00:00 │ 02:19:40 │ 32   │ 64G │ gres/gpu:a100:4 │ Gregor von Laszewski |
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>╰──────────┴────────┴────┴───────┴─────────┴──────────┴──────┴─────┴─────────────────┴──────────────────────╯                                                                                   
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>---- PENDING JOBS (Top 10) ----
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>JOBID         USER    ST       TIME     NODELIST(REASON)
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>MSG: Report generated on: 2026-08-12 13:28:50
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>MSG: Done.
+</span></code></pre></div>
+<h3 id="job-details">Job Details</h3>
+<p>Get a deep-dive into a specific Slurm job:
+<code>cmc resource job 18438406</code></p>
+<h3 id="local-kubernetes-probe">Local Kubernetes Probe</h3>
+<p>Detect the host environment, provide a system summary (including OS, CPU, RAM, Disk, and last Time Machine backup on macOS), and get a recommendation for the most suitable local Kubernetes tool (kind, minikube, k3d, or microk8s).</p>
+<p><code>cmc resource probe k8s</code></p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Resource Summary</strong>: Real-time view of Free, Total, and Used CPUs, Memory, and GPUs.</li>
+<li><strong>Active Jobs Table</strong>: Detailed list of running jobs including:<ul>
+<li><strong>Time</strong>: Time already used.</li>
+<li><strong>Limit</strong>: Total scheduled time limit.</li>
+<li><strong>Left</strong>: Calculated remaining time (<code>Limit - Time</code>).</li>
+<li><strong>Full Name</strong>: Resolved user names (with local caching for performance).</li>
+</ul>
+</li>
+<li><strong>Performance</strong>: Uses persistent SSH connections and configurable timeouts to ensure stability and speed.</li>
+<li><strong>Local Infrastructure Probe</strong>: Provides a detailed system summary on macOS, including hardware specs and the last Time Machine backup status, to recommend the best local Kubernetes distribution.</li>
+</ul>
 <h2 id="core-dependencies">Core Dependencies</h2>
 <p>This project depends on the following core components of the Cloudmesh AI ecosystem:
 - <a href="https://github.com/cloudmesh-ai/cloudmesh-ai-common">cloudmesh-ai-common</a>
