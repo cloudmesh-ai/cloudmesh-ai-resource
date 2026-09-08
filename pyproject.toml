@@ -33,3 +33,6 @@ resource = "command.resource:register"
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["command*"]
+
+[tool.cloudmesh-ai]
+status = "stable"
